@@ -8,11 +8,19 @@ router.get('/', (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
 });
+try {
+  const productInfo = await.Product.findByPk({ include: Category, Tag });
+  res.status(200).json(productInfo);
+} catch (err) {
+  res.status(404).json({ message: "No product foind by that Category/Tag combo" });
+};
+
 
 // get one product
 router.get('/:id', (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
+
 });
 
 // create new product
